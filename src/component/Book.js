@@ -1,11 +1,31 @@
-import { useNavigate } from "react-router";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { cartState } from "../store/recoil";
+import { useEffect, useState } from "react";
 
-export default function Book({ title, author, coverId, id }) {
-  console.log(title);
-  console.log(author);
-  console.log(coverId);
-
+export default function Book({ title, author, coverId, id, price }) {
   const navigate = useNavigate();
+  const [cart, setCart] = useRecoilState(cartState);
+
+  // Check if the book with the same ID is already in the cart
+  const isBookInCart = cart.some((item) => item.id === id);
+
+  const addToCart = () => {
+    const book = { title, author, coverId, id, price };
+
+    // Check if the book with the same ID already exists in the cart
+    const isBookInCart = cart.some((item) => item.id === id);
+
+    if (!isBookInCart) {
+      setCart([...cart, book]);
+    }
+  };
+
+  useEffect(() => {
+    console.log(cart);
+  });
+
   return (
     <div className="w-48 min-h-[275px] border border-gray-300 p-2 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
       <div
@@ -31,12 +51,13 @@ export default function Book({ title, author, coverId, id }) {
         />
       </div>
       <h3 className="font-semibold mt-3 mb-2">{title}</h3>
-      {/* <div className="flex justify-between items-center">
-        <span>
-          Author:{" "}
-          <span className="text-gray-500 italic font-medium">{author}</span>
-        </span>
-      </div> */}
+
+      {/* Button text based on whether the book is in the cart */}
+      {isBookInCart ? (
+        <button disabled>Added to Cart</button>
+      ) : (
+        <button onClick={addToCart}>Add to Cart</button>
+      )}
     </div>
   );
 }

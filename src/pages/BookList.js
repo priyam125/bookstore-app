@@ -66,6 +66,7 @@ export default function BookList() {
       <div className="max-w-7xl mx-auto flex flex-wrap gap-8 justify-center">
         {data &&
           data.docs.map((d, i) => {
+            console.log(d);
             return (
               <Book
                 title={d.title}
@@ -74,6 +75,7 @@ export default function BookList() {
                 genre={d.genre}
                 description={d.description}
                 id={d.key.substring(7)}
+                price={d.want_to_read_count}
               />
             );
           })}
