@@ -6,7 +6,7 @@ import Book from "../component/Book";
 import Search from "../component/Search";
 import Loader from "../component/Loader";
 
-export default function Books() {
+export default function BookList() {
   const [data, setData] = useState(null);
   const [query, setQuery] = useState("");
   const [pageCount, setPageCount] = useState(1);
@@ -67,27 +67,14 @@ export default function Books() {
         {data &&
           data.docs.map((d, i) => {
             return (
-              <button
-                key={i}
-                onClick={() => {
-                  navigate(`/books${d.key.substring(6)}`, {
-                    state: {
-                      title: d.title,
-                      author: d.author_name && d.author_name.join(", "),
-                      coverId: d.cover_i,
-                      type: d.type,
-                    },
-                  });
-                }}
-              >
-                <Book
-                  title={d.title}
-                  author={d.author_name && d.author_name.join(", ")}
-                  coverId={d.cover_i}
-                  genre={d.genre}
-                  description={d.description}
-                />
-              </button>
+              <Book
+                title={d.title}
+                author={d.author_name && d.author_name.join(", ")}
+                coverId={d.cover_i}
+                genre={d.genre}
+                description={d.description}
+                id={d.key.substring(7)}
+              />
             );
           })}
       </div>

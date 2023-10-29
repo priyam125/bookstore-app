@@ -1,10 +1,25 @@
-export default function Book({ title, author, coverId }) {
+import { useNavigate } from "react-router";
+
+export default function Book({ title, author, coverId, id }) {
   console.log(title);
   console.log(author);
   console.log(coverId);
+
+  const navigate = useNavigate();
   return (
-    <div className="w-48 min-h-[275px] border border-gray-300 p-2 rounded-lg shadow-md hover:shadow-lg">
-      <div className="w-full h-48">
+    <div className="w-48 min-h-[275px] border border-gray-300 p-2 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
+      <div
+        onClick={() =>
+          navigate(`/books/${id}`, {
+            state: {
+              title: title,
+              author: author,
+              coverId: coverId,
+            },
+          })
+        }
+        className="w-full h-48"
+      >
         <img
           src={
             coverId
