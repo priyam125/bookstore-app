@@ -9,7 +9,7 @@ function Login() {
 
   const handleLogin = () => {
     localStorage.setItem("isAuthenticated", true);
-    navigate("/books");
+    navigate("/");
   };
 
   return (
