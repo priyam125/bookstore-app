@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Book from "../component/Book";
@@ -11,9 +10,6 @@ export default function BookList() {
   const [query, setQuery] = useState("");
   const [pageCount, setPageCount] = useState(1);
   const [loading, setLoading] = useState(false);
-  const isfired = useRef(false);
-
-  const navigate = useNavigate();
 
   const searchQuery = (e) => {
     setPageCount(1);
@@ -21,10 +17,7 @@ export default function BookList() {
   };
 
   useEffect(() => {
-    if (!isfired.current) {
-      fetchData();
-      isfired.current = true;
-    }
+    fetchData();
   }, [pageCount]);
 
   const fetchData = () => {
@@ -81,7 +74,7 @@ export default function BookList() {
           })}
       </div>
       {data && (
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-20">
           <button
             type="button"
             className="m-2 px-3 py-2 bg-blue-500 text-white border-none cursor-pointer rounded-md"

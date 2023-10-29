@@ -54,9 +54,9 @@ export default function Book({ title, author, coverId, id, price }) {
 
       {/* Button text based on whether the book is in the cart */}
       {isBookInCart ? (
-        <button disabled>Added to Cart</button>
+        <button disabled className="m-2 px-3 py-2 bg-green-500 text-white border-none cursor-pointer rounded-md">Added to Cart</button>
       ) : (
-        <button onClick={addToCart}>Add to Cart</button>
+        <button className="m-2 px-3 py-2 bg-blue-500 text-white border-none cursor-pointer rounded-md" onClick={addToCart}>Add to Cart</button>
       )}
     </div>
   );

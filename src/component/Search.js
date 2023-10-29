@@ -1,4 +1,3 @@
-
 export default function Search({
   placeholder,
   value,
@@ -30,7 +29,11 @@ export default function Search({
           x
         </button>
       </div>
-      <button type="button" onClick={(e) => searchClick(e)}>
+      <button
+        className="m-2 px-3 py-2 bg-blue-500 text-white border-none cursor-pointer rounded-md"
+        type="button"
+        onClick={(e) => searchClick(e)}
+      >
         Search
       </button>
     </div>

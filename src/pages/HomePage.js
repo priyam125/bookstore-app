@@ -48,6 +48,11 @@ const HomePage = () => {
 
   return (
     <div>
+      <h2 className="text-2xl font-semibold mb-4">Welcome to the Bookstore</h2>
+      <p className="text-lg mb-4">
+        Discover a world of books on various subjects, from design and
+        programming to finance and more.
+      </p>
       <h2 className="text-2xl font-semibold mb-4">Featured Book</h2>
       {featuredBook && (
         <div className="flex gap-4">

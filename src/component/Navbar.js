@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { cartState } from "../store/recoil";
-import Cart from "./Cart";
+import CartModal from "./Cart";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const NavBar = () => {
   const location = useLocation();
-
   const [cart, setCart] = useRecoilState(cartState);
   const [isCartOpen, setCartOpen] = useState(false);
 
-  const openCart = () => {
-    setCartOpen(true);
+  // Toggle cart modal
+  const toggleCart = () => {
+    setCartOpen(!isCartOpen);
   };
 
   const closeCart = () => {
@@ -27,8 +27,8 @@ const NavBar = () => {
   return (
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="cart-icon flex" onClick={openCart}>
-          <AiOutlineShoppingCart size={30}/>
+        <div className="cart-icon flex cursor-pointer" onClick={toggleCart}>
+          <AiOutlineShoppingCart size={30} />
           <span>{cart.length}</span>
         </div>
         <Link to="/" className="text-white font-semibold text-xl">
@@ -43,7 +43,13 @@ const NavBar = () => {
           </Link>
         </div>
       </div>
-      <Cart isOpen={isCartOpen} closeCart={closeCart} cart={cart} />
+      <CartModal
+        isOpen={isCartOpen}
+        toggleCart={toggleCart}
+        closeCart={closeCart}
+        cart={cart}
+        setCart={setCart}
+      />
     </nav>
   );
 };
