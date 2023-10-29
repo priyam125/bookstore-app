@@ -9,11 +9,9 @@ const CartModal = ({ isOpen, closeCart, cartIconRef }) => {
     return null;
   }
 
-  // Calculate the total price
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   const removeItem = (id) => {
-    // Remove the item from the cart
     setCart(cart.filter((item) => item.id !== id));
   };
 
