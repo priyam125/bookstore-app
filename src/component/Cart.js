@@ -20,13 +20,13 @@ const CartModal = ({ isOpen, closeCart, cartIconRef }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-end z-50">
       <div
-        className="bg-black bg-opacity-50 fixed inset-0" // Backdrop
-        onClick={closeCart} // Click to close the modal
+        className="bg-black bg-opacity-50 fixed inset-0"
+        onClick={closeCart}
       />
       <div
         className="bg-white p-4 w-80 rounded-lg shadow-lg absolute left-0 top-12 transform translate-x-1/2"
         ref={cartIconRef}
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on modal
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Shopping Cart</h2>

@@ -8,13 +8,11 @@ export default function Book({ title, author, coverId, id, price }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartState);
 
-  // Check if the book with the same ID is already in the cart
   const isBookInCart = cart.some((item) => item.id === id);
 
   const addToCart = () => {
     const book = { title, author, coverId, id, price };
 
-    // Check if the book with the same ID already exists in the cart
     const isBookInCart = cart.some((item) => item.id === id);
 
     if (!isBookInCart) {
@@ -52,11 +50,20 @@ export default function Book({ title, author, coverId, id, price }) {
       </div>
       <h3 className="font-semibold mt-3 mb-2">{title}</h3>
 
-      {/* Button text based on whether the book is in the cart */}
       {isBookInCart ? (
-        <button disabled className="m-2 px-3 py-2 bg-green-500 text-white border-none cursor-pointer rounded-md">Added to Cart</button>
+        <button
+          disabled
+          className="m-2 px-3 py-2 bg-green-500 text-white border-none cursor-pointer rounded-md"
+        >
+          Added to Cart
+        </button>
       ) : (
-        <button className="m-2 px-3 py-2 bg-blue-500 text-white border-none cursor-pointer rounded-md" onClick={addToCart}>Add to Cart</button>
+        <button
+          className="m-2 px-3 py-2 bg-blue-500 text-white border-none cursor-pointer rounded-md"
+          onClick={addToCart}
+        >
+          Add to Cart
+        </button>
       )}
     </div>
   );

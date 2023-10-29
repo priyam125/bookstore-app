@@ -70,7 +70,6 @@ const HomePage = () => {
           <div className="w-3/4">
             <h3 className="text-xl font-semibold">{featuredBook.title}</h3>
             <p>Author: {featuredBook.author_name}</p>
-            {/* You can display additional book information here */}
           </div>
         </div>
       )}
