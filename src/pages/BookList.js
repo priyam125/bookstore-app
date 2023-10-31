@@ -28,8 +28,6 @@ export default function BookList() {
         `https://openlibrary.org/search.json?q=${q}&limit=10&page=${pageCount}`
       )
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
         const data = response.data;
         data.numFound ? setData(data) : setData(null);
         setLoading(false);
@@ -59,7 +57,6 @@ export default function BookList() {
       <div className="max-w-7xl mx-auto flex flex-wrap gap-8 justify-center">
         {data &&
           data.docs.map((d, i) => {
-            console.log(d);
             return (
               <Book
                 title={d.title}

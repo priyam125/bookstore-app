@@ -35,7 +35,6 @@ const HomePage = () => {
 
         if (books.length > 0) {
           const randomBook = books[Math.floor(Math.random() * books.length)];
-          console.log(randomBook);
           setFeaturedBook(randomBook);
         }
         setLoading(false);

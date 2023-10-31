@@ -6,10 +6,6 @@ const BookDetails = () => {
   const location = useLocation();
   const { title, author, coverId } = location.state || {};
 
-  console.log(title);
-  console.log(author);
-  console.log(coverId);
-
   return (
     <div className="p-4">
       <h2 className="text-2xl font-semibold mb-4">{title}</h2>
@@ -29,7 +25,6 @@ const BookDetails = () => {
           <p>Author: {author}</p>
           {/* <p>Genre: {genre}</p> */}
           {/* <p>Description: {description}</p> */}
-          {/* You can add more details here */}
         </div>
       </div>
     </div>

@@ -20,10 +20,6 @@ export default function Book({ title, author, coverId, id, price }) {
     }
   };
 
-  useEffect(() => {
-    console.log(cart);
-  });
-
   return (
     <div className="w-48 min-h-[275px] border border-gray-300 p-2 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
       <div
